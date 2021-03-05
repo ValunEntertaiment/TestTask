@@ -7,12 +7,11 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            SqlConnection sqlConnection = new SqlConnection("Data Source=(localdb)\\MSSQLSERVER; Initial Catalog=TestTask; Integrated Security=True;");
-            sqlConnection.Open();
-            SqlCommand sqlCommand = new SqlCommand("select * from Employees");
-            Console.WriteLine(sqlCommand.ExecuteNonQuery());
-
-            sqlConnection.Close();
+            using(SqlConnection sqlConnection = new SqlConnection("Data Source=VALUN;Initial Catalog=TestTask;Integrated Security=True"));
+            {
+                SqlCommand sqlCommand = new SqlCommand("select * from Employees");
+                Console.WriteLine(sqlCommand.ExecuteNonQuery());
+            }
             Console.ReadLine();
         }
     }
