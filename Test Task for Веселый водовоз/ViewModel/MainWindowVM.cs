@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using TestTask.Commands;
-using TestTask.Model.Tables;
+using TestTask.Model;
+using TestTask.Model.Entities;
+//using TestTask.Model.Tables;
 
 namespace TestTask.ViewModel
 {
@@ -12,9 +15,9 @@ namespace TestTask.ViewModel
         #region Properties
 
         #region Список сотрудников
-        private List<EmployeeTable> _Employees;
+        private IQueryable<Employee> _Employees = new SQL().SelectEmployee();
         /// <summary>Список сотрудников</summary>
-        public List<EmployeeTable> Employees
+        public IQueryable<Employee> Employees
         {
             get => _Employees;
             set => Set(ref _Employees, value);
@@ -22,10 +25,10 @@ namespace TestTask.ViewModel
         #endregion
 
         #region Список подразделений
-        private List<DepartmentTable> _Departments;
+        private List<Department> _Departments;
 
         /// <summary>Список департаментов</summary>
-        public List<DepartmentTable> Departments
+        public List<Department> Departments
         {
             get => _Departments;
             set => Set(ref _Departments, value);
@@ -33,12 +36,12 @@ namespace TestTask.ViewModel
         #endregion
 
         #region Список заказов
-        private List<OrderTable> _OrdersTable;
+        private List<Order> _Orders;
 
-        public List<OrderTable> Orders
+        public List<Order> Orders
         {
-            get => _OrdersTable;
-            set => Set(ref _OrdersTable, value);
+            get => _Orders;
+            set => Set(ref _Orders, value);
         }
         #endregion
 

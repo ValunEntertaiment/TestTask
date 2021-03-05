@@ -69,6 +69,7 @@
     <Compile Include="Commands\Base\LambdaCommand.cs" />
     <Compile Include="Data\Entities\Department.cs" />
     <Compile Include="Data\MyDbContext.cs" />
+    <Compile Include="Model\SQL.cs" />
     <Compile Include="Model\Tables\DepartmentTable.cs" />
     <Compile Include="Model\Tables\EmployeeTable.cs" />
     <Compile Include="Model\Tables\OrderTable.cs" />

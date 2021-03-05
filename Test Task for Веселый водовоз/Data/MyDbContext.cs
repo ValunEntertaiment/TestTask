@@ -5,7 +5,7 @@ namespace TestTask.Model
 {
     public class MyDbContext : DbContext
     {
-        public MyDbContext() : base("DbConnectionString")
+        public MyDbContext() : base("Data Source = (localdb)\\VALUN; Initial Catalog = TestEF; Integrated Security = True;")
         {
         }
 

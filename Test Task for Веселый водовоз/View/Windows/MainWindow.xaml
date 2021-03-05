@@ -47,7 +47,7 @@
                         <DataGridTemplateColumn Header="Order data" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <DatePicker Text="{Binding Path=OrderDate, Mode=TwoWay}" FontSize="12" Foreground="Black" HorizontalAlignment="Center"/>
+                                    <DatePicker  Text="{Binding Path=OrderDate, Mode=TwoWay}" FontSize="12" Foreground="Black" HorizontalAlignment="Center"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
