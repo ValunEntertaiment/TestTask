@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestTask.Model.Entities
+namespace TestTask.Data.Entities
 {
     public class Order
     {

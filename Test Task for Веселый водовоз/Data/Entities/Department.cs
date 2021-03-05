@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TestTask.Model.Entities
+namespace TestTask.Data.Entities
 {
     public class Department
     {

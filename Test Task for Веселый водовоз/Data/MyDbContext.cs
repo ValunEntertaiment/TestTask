@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using TestTask.Model.Entities;
+using TestTask.Data.Entities;
 
-namespace TestTask.Model
+namespace TestTask.Data
 {
     public class MyDbContext : DbContext
     {
