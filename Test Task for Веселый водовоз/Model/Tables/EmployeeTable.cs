@@ -18,7 +18,7 @@ namespace TestTask.Model.Tables
         /// <summary>Пол</summary>
         public Gender Gender { get; set; }
         /// <summary>Номер подразделения</summary>
-        public DepartmentTable DepartmentName { get; set; }
+        public string DepartmentName { get; set; }
         #endregion
     }
 
