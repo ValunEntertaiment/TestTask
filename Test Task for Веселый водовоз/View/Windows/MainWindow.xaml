@@ -14,45 +14,43 @@
     <Grid>
         <StackPanel>
             <Grid>
-                <DataGrid x:Name="DataGridEmployee" ItemsSource="{Binding Path=Employees, Mode=TwoWay}" AutoGenerateColumns="False" Visibility="{Binding VisibilityDataGridEmployee}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="First Name" Binding="{Binding Path=FirstName, Mode=TwoWay}" />
-                        <DataGridTextColumn Header="Middle Name" Binding="{Binding Path=MiddleName, Mode=TwoWay}" />
-                        <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName, Mode=TwoWay}" />
-                        <DataGridTemplateColumn Header="Birthday" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <DatePicker Text="{Binding Path=Birthday}" FontSize="12" Foreground="Black" HorizontalAlignment="Center"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                <DataGrid x:Name="DataGridEmployee" AutoGenerateColumns="False" ItemsSource="{Binding Path=Employees, Mode=TwoWay}" Visibility="{Binding VisibilityDataGridEmployee}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Last name" Binding="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header="First name" Binding="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header="Middle name" Binding="{Binding Path=MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                        <DataGridTextColumn Header="Gender" Binding="{Binding Path=Gender, Mode=TwoWay}" />
-                        <DataGridTextColumn Header="DepartmentId" Binding="{Binding Path=DepartmentId, Mode=TwoWay}"/>
-                    </DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Birthday">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker Text="{Binding Path=Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="12" Foreground="Black" HorizontalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
                 </DataGrid>
 
                 <DataGrid x:Name="DataGridDepartments" ItemsSource="{Binding Path=Departments, Mode=TwoWay}" AutoGenerateColumns="False" Visibility="{Binding VisibilityDataGridDepartment}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Department Name" Binding="{Binding Path=Name, Mode=TwoWay}" />
-                        <DataGridTextColumn Header="Department Director" Binding="{Binding Path=DepartmentDirector.LastName, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Department Name" Binding="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <DataGridTextColumn Header="Department Director" Binding="{Binding Path=DepartmentDirector.LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </DataGrid.Columns>
                 </DataGrid>
 
                 <DataGrid x:Name="DataGridOrders" ItemsSource="{Binding Path=Orders, Mode=TwoWay}" AutoGenerateColumns="False" Visibility="{Binding VisibilityDataGridOrder}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Order Number" Binding="{Binding Path=Id, Mode=TwoWay}" />
-                        <DataGridTextColumn Header="Agent" Binding="{Binding Path=Agent, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Order Number" Binding="{Binding Path=Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <DataGridTextColumn Header="Agent" Binding="{Binding Path=Agent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                         <DataGridTemplateColumn Header="Order data" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <DatePicker Text="{Binding Path=OrderDate, Mode=TwoWay}" FontSize="12" Foreground="Black" HorizontalAlignment="Center"/>
+                                    <DatePicker Text="{Binding Path=OrderDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="12" Foreground="Black" HorizontalAlignment="Center"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn Header="Employee" Binding="{Binding Path=Author, Mode=TwoWay}"/>
+                        <DataGridTextColumn Header="Employee" Binding="{Binding Path=Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

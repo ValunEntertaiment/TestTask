@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using TestTask.Commands;
@@ -17,7 +16,13 @@ namespace TestTask.ViewModel
         public List<EmployeeTable> Employees
         {
             get => _Employees;
-            set => Set(ref _Employees, value);
+            set
+            {
+                if (Set(ref _Employees, value))
+                {
+                    //TODO: updateEmployee
+                }
+            }
         }
         #endregion
 
