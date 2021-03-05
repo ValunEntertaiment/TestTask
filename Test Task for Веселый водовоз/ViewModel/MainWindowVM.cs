@@ -3,55 +3,18 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using TestTask.Commands;
-using TestTask.Model.Entities;
+using TestTask.Model.Tables;
 
 namespace TestTask.ViewModel
 {
     class MainWindowVM : ViewModel
     {
         #region Properties
-        
+
         #region Список сотрудников
-        private List<Employee> _Employees = new List<Employee>
-        {
-            new Employee()
-            {
-                LastName = "test1",
-                MiddleName = "test1",
-                FirstName = "test1",
-                Birthday = DateTime.Now,
-                Gender = Gender.man
-            },
-
-            new Employee()
-            {
-                LastName = "test2",
-                MiddleName = "test2",
-                FirstName = "test2",
-                Birthday = DateTime.Now,
-                Gender = Gender.wooman
-            },
-
-            new Employee()
-            {
-                LastName = "test3",
-                MiddleName = "test3",
-                FirstName = "test3",
-                Birthday = DateTime.Now,
-                Gender = Gender.man
-            },
-
-            new Employee()
-            {
-                LastName = "test4",
-                MiddleName = "test4",
-                FirstName = "test4",
-                Birthday = DateTime.Now,
-                Gender = Gender.wooman
-            }
-        };
+        private List<EmployeeTable> _Employees;
         /// <summary>Список сотрудников</summary>
-        public List<Employee> Employees
+        public List<EmployeeTable> Employees
         {
             get => _Employees;
             set => Set(ref _Employees, value);
@@ -59,37 +22,10 @@ namespace TestTask.ViewModel
         #endregion
 
         #region Список подразделений
-        private List<Department> _Departments = new List<Department>
-        {
-           new Department()
-           {
-               Name = "DepartmentName1",
-               DepartmentDirector = new Employee()
-               {
-                   LastName = "Valiev",
-                   FirstName = "Timur",
-                   MiddleName ="Albertovich",
-                   Birthday = new DateTime(2000, 5, 16),
-                   Department = null,
-               }
-           },
-
-           new Department()
-           {
-               Name = "DepartmentName2",
-               DepartmentDirector = new Employee()
-               {
-                   LastName = "Valieva",
-                   FirstName = "Alina",
-                   MiddleName ="Albertovna",
-                   Birthday = new DateTime(2005, 2, 21),
-                   Department = null
-               }
-           }
-        };
+        private List<DepartmentTable> _Departments;
 
         /// <summary>Список департаментов</summary>
-        public List<Department> Departments
+        public List<DepartmentTable> Departments
         {
             get => _Departments;
             set => Set(ref _Departments, value);
@@ -97,28 +33,12 @@ namespace TestTask.ViewModel
         #endregion
 
         #region Список заказов
-        private List<Order> _Orders = new List<Order>
-        {
-            new Order()
-            {
-                Id = 1,
-                Agent = "Vasya",
-                OrderDate = DateTime.Now,
-                Employee = new Employee()
-                {
-                    LastName = "Valieva",
-                    FirstName = "Alina",
-                    MiddleName ="Albertovna",
-                    Birthday = new DateTime(2005, 2, 21),
-                    Department = null
-                }
-            }
-        };
+        private List<OrderTable> _OrdersTable;
 
-        public List<Order> Orders
+        public List<OrderTable> Orders
         {
-            get => _Orders;
-            set => Set(ref _Orders, value);
+            get => _OrdersTable;
+            set => Set(ref _OrdersTable, value);
         }
         #endregion
 
@@ -155,7 +75,6 @@ namespace TestTask.ViewModel
 
         #region VisibilityDataGridEmployees
         public ICommand VisibilityDataGridEmployeesCommand { get; }
-        
 
         private bool Employee = true;
         
@@ -180,9 +99,7 @@ namespace TestTask.ViewModel
         #region VisibilityDataGridDepartment
         public ICommand VisibilityDataGridDepartmentCommand { get; }
 
-
         private bool Department = false;
-
 
         private bool CanVisibilityDataGridDepartmentExecute(object p) => !Department;
 
@@ -205,9 +122,7 @@ namespace TestTask.ViewModel
         #region VisibilityDataGridOrder
         public ICommand VisibilityDataGridOrderCommand { get; }
 
-
         private bool Order = false;
-
 
         private bool CanVisibilityDataGridOrderExecute(object p) => !Order;
 
