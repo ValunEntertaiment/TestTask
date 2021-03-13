@@ -14,19 +14,21 @@
     <Grid>
         <StackPanel>
             <Grid>
-                <DataGrid x:Name="DataGridEmployee" AutoGenerateColumns="False" ItemsSource="{Binding Path=Employees, Mode=TwoWay}" Visibility="{Binding VisibilityDataGridEmployee}">
+                <DataGrid ItemsSource="{Binding Path=Employees, Mode=OneTime}" Visibility="{Binding VisibilityDataGridEmployee}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Last name" Binding="{Binding Path=LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <DataGridTextColumn Header="First name" Binding="{Binding Path=FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                    <DataGridTextColumn Header="Middle name" Binding="{Binding Path=MiddleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Last name" Binding="{Binding Path=LastName}" />
+                    <DataGridTextColumn Header="First name" Binding="{Binding Path=FirstName}" />
+                    <DataGridTextColumn Header="Middle name" Binding="{Binding Path=MiddleName}"/>
 
                     <DataGridTemplateColumn Header="Birthday">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <DatePicker Text="{Binding Path=Birthday, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="12" Foreground="Black" HorizontalAlignment="Center"/>
+                                <DatePicker Text="{Binding Path=Birthday}" FontSize="12" Foreground="Black" HorizontalAlignment="Center"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Gender" Binding="{Binding Gender}"/>
+                        <DataGridTextColumn Header="Department name" Binding="{Binding Department.Name}"/>    
                 </DataGrid.Columns>
                 </DataGrid>
 
@@ -59,6 +61,7 @@
                     <Button Width="100" Height="25" Content="Employee" Command="{Binding VisibilityDataGridEmployeesCommand}"/>
                     <Button Width="100" Height="25" Content="Order" Command="{Binding VisibilityDataGridOrderCommand}"/>
                     <Button Width="100" Height="25" Content="Department" Command="{Binding VisibilityDataGridDepartmentCommand}"/>
+                    <Button Width="100" Height="25" Content="Save" Command="{Binding SaveEmployeeCommand}" />
                 </StackPanel>
             </Grid>
         </StackPanel>

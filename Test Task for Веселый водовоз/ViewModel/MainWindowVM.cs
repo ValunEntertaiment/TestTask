@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Input;
 using TestTask.Commands;
+using TestTask.Data.Entities;
+using TestTask.Model;
 using TestTask.Model.Tables;
 
 namespace TestTask.ViewModel
@@ -11,18 +15,11 @@ namespace TestTask.ViewModel
         #region Properties
 
         #region Список сотрудников
-        private List<EmployeeTable> _Employees;
+        private ObservableCollection<Employee> _Employees = new SQL().SelectEmployee();
         /// <summary>Список сотрудников</summary>
-        public List<EmployeeTable> Employees
+        public ObservableCollection<Employee> Employees
         {
             get => _Employees;
-            set
-            {
-                if (Set(ref _Employees, value))
-                {
-                    //TODO: updateEmployee
-                }
-            }
         }
         #endregion
 
@@ -146,6 +143,18 @@ namespace TestTask.ViewModel
             }
         }
         #endregion
+
+        #region SaveEmployee
+        public ICommand SaveEmployeeCommand { get; }
+
+        private bool CanSaveEmployeeExecute(object p) => true;
+
+        private void OnSaveEmployeeExecuted(object p)
+        {
+            new SQL().UpdateEmployee(_Employees);
+        }
+        #endregion
+
         #endregion
 
         public MainWindowVM()
@@ -154,6 +163,7 @@ namespace TestTask.ViewModel
             VisibilityDataGridEmployeesCommand = new LambdaCommand(OnVisibilityDataGridEmployeesExecuted, CanVisibilityDataGridEmployeesExecute);
             VisibilityDataGridDepartmentCommand = new LambdaCommand(OnVisibilityDataGridDepartmentExecuted, CanVisibilityDataGridDepartmentExecute);
             VisibilityDataGridOrderCommand = new LambdaCommand(OnVisibilityDataGridOrderExecuted, CanVisibilityDataGridOrderExecute);
+            SaveEmployeeCommand = new LambdaCommand(OnSaveEmployeeExecuted, CanSaveEmployeeExecute);
             #endregion
         }
     }
