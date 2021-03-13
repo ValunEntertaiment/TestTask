@@ -1,33 +1,32 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using TestTask.Data;
 using TestTask.Data.Entities;
 
-namespace TestTask.Data
+namespace TestTask.Model
 {
     class SQL
     {
-        public List<Employee> SelectEmployee()
+        public ObservableCollection<Employee> SelectEmployee()
         {
             using (var context = new MyDbContext())
             {
                 var employees = (from e in context.Employees
                                  select e).ToList<Employee>();
-                return employees;
+                
+                return new ObservableCollection<Employee>(employees);
             }
         }
 
-        public bool UpdateEmployee(List<Employee> employees)
+        public void UpdateEmployee(ObservableCollection<Employee> employees)
         {
             using(var context = new MyDbContext())
             {
-                if (!Equals(context.Employees, employees))
-                {
-                    //я не придумал ничего лучше)) уж извиняйте)
-                    context.Employees = null;
-                    context.Employees.AddRange(employees);
-                    return true;
-                }
-                return false;
+                //я не придумал ничего лучше)) уж извиняйте)
+                //context.Employees = null;
+                context.Employees.AddRange(employees);
+                context.SaveChanges();
             }
         }
 
@@ -55,7 +54,6 @@ namespace TestTask.Data
                 return false;
             }
         }
-
 
         public List<Order> SelectOrder()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TestTask.Data.Entities
 {
@@ -7,7 +8,17 @@ namespace TestTask.Data.Entities
     {
         #region Столбцы
         /// <summary>идентификатор сотрудника</summary>
-        public int Id { get; set; }
+        public int Id
+        {
+            get 
+            {
+                return Id;
+            }
+            set
+            {
+
+            }
+        }
         /// <summary>Фамилия</summary>
         public string LastName { get; set; }
         /// <summary>Отчество</summary>
@@ -15,11 +26,12 @@ namespace TestTask.Data.Entities
         /// <summary>Имя</summary>
         public string FirstName { get; set; }
         /// <summary>День рождения</summary>
+        [Column(TypeName = "datetime")]
         public DateTime Birthday { get; set; }
         /// <summary>Пол</summary>
         public Gender Gender { get; set; }
         /// <summary>Номер подразделения</summary>
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
         #endregion
 
         #region Связи
